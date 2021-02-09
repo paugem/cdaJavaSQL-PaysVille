@@ -10,14 +10,18 @@ public class Pays {
 		this.nbHabitants=pNbHabitants;
 	}
 	
-	public Pays(int pNumPays, String pNomPays, int pNbHabitants) {
-		this.numPays=pNumPays;
+	public Pays(int id, String pNomPays, int pNbHabitants) {
+		this.numPays=id;
 		this.nomPays=pNomPays;
 		this.nbHabitants=pNbHabitants;
 	}
 	
 	public int getNumPays() {
 		return numPays;
+	}
+	
+	public void setNumPays(int numPays) {
+		this.numPays = numPays;
 	}
 	
 	public String getNomPays() {
@@ -34,5 +38,10 @@ public class Pays {
 	
 	public void setNbHabitants(int nbHabitants) {
 		this.nbHabitants = nbHabitants;
+	}
+	
+	@Override
+	public String toString() {
+		return "[id=" + numPays + ", nom=" + nomPays + ", Nombre d'habitants=" + nbHabitants + "]";
 	}
 }

@@ -12,8 +12,8 @@ public class Ville {
 		this.idPays=pIdPays;
 	}
 	
-	public Ville (int pNumVille,String pNomVille, int pSuperficie, int pIdPays) {
-		this.numVille=pNumVille;
+	public Ville (int id, String pNomVille, int pSuperficie, int pIdPays) {
+		this.numVille=id;
 		this.nomVille=pNomVille;
 		this.superficie=pSuperficie;
 		this.idPays=pIdPays;
@@ -38,6 +38,10 @@ public class Ville {
 	public int getNumVille() {
 		return numVille;
 	}
+	
+	public void setNumVille(int numVille) {
+		this.numVille = numVille;
+	}
 
 	public int getIdPays() {
 		return idPays;
@@ -45,5 +49,10 @@ public class Ville {
 
 	public void setIdPays(int idPays) {
 		this.idPays = idPays;
+	}
+	
+	@Override
+	public String toString() {
+		return "[id=" + numVille + ", nom=" + nomVille + ", Nombre d'habitants=" + superficie + ", id_Pays="+idPays+"]";
 	}
 }
