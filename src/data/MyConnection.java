@@ -1,3 +1,5 @@
+package data;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -10,7 +12,7 @@ public class MyConnection {
 
 	private MyConnection() {
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			connexion = DriverManager.getConnection(url, user, password);
 		} catch (Exception e) {
 			e.printStackTrace();

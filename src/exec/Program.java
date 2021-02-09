@@ -1,3 +1,4 @@
+package exec;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -37,18 +38,21 @@ public class Program {
 								 + "7 : Afficher la plus grande ville et le pays le plus peuplé\n"
 								 + "0 : Quitter";
 					System.out.println(strMenu);
+					System.out.print("  < ");
 					String option = sc.nextLine();
 					while(!option.equals("0")) {
 						switch(option) {
 						case "1":
 							System.out.println("Créer un pays");
 							System.out.println("Nom du pays :");
+							System.out.print("  < ");
 							String nomPays = sc.nextLine().toUpperCase();
 							Statement statement = connexion.createStatement();
 							String request = "SELECT * FROM Pays WHERE nom_pays = '"+nomPays+"';";
 							ResultSet result = statement.executeQuery(request);
 							if(result.next()==false) {
 								System.out.println("Nombre d'habitants :");
+								System.out.print("  < ");
 								Integer nbHabitants = Integer.parseInt(sc.nextLine());
 								request = "INSERT INTO Pays (nom_pays,nbre_habitants) VALUES (?,?);";
 								PreparedStatement ps = connexion.prepareStatement(request,PreparedStatement.RETURN_GENERATED_KEYS);
@@ -65,19 +69,23 @@ public class Program {
 							}
 							System.out.println();
 							System.out.println(strMenu);
+							System.out.print("  < ");
 							option = sc.nextLine();
 							break;
 						case "2":
 							System.out.println("Créer une ville");
 							System.out.println("Nom de la ville :");
+							System.out.print("  < ");
 							String nomVille = sc.nextLine().toUpperCase();
 							statement = connexion.createStatement();
 							request = "SELECT * FROM Ville WHERE nom_ville = '"+nomVille+"';";
 							result = statement.executeQuery(request);
 							if(result.next()==false) {
 								System.out.println("Superficie :");
+								System.out.print("  < ");
 								Integer superficie = Integer.parseInt(sc.nextLine());
 								System.out.println("Nom du pays auquel appartient la ville");
+								System.out.print("  < ");
 								nomPays = sc.nextLine().toUpperCase();
 								statement = connexion.createStatement();
 								request = "SELECT * FROM Pays WHERE nom_pays = '"+nomPays+"';";
@@ -105,11 +113,13 @@ public class Program {
 							}
 							System.out.println();
 							System.out.println(strMenu);
+							System.out.print("  < ");
 							option = sc.nextLine();
 							break;
 						case "3":
 							System.out.println("Liste des villes d'un pays");
 							System.out.println("Quel pays ? : ");
+							System.out.print("  < ");
 							nomPays = sc.nextLine();
 							statement = connexion.createStatement();
 							request = "SELECT * FROM Pays WHERE nom_pays = '"+nomPays+"';";
@@ -129,6 +139,7 @@ public class Program {
 							}
 							System.out.println();
 							System.out.println(strMenu);
+							System.out.print("  < ");
 							option = sc.nextLine(); 
 							break;
 						case "4":
@@ -144,11 +155,13 @@ public class Program {
 							}
 							System.out.println();
 							System.out.println(strMenu);
+							System.out.print("  < ");
 							option = sc.nextLine();
 							break;
 						case "5":
 							System.out.println("Supprimer un pays");
 							System.out.println("Nom du pays à supprimer:");
+							System.out.print("  < ");
 							nomPays = sc.nextLine().toUpperCase();
 							statement = connexion.createStatement();
 							request = "SELECT * FROM Pays WHERE nom_pays = '"+nomPays+"';";
@@ -170,11 +183,13 @@ public class Program {
 							}
 							System.out.println();
 							System.out.println(strMenu);
+							System.out.print("  < ");
 							option = sc.nextLine();
 							break;
 						case "6":
 							System.out.println("Supprimer une ville");
 							System.out.println("Nom de la ville à supprimer:");
+							System.out.print("  < ");
 							nomVille = sc.nextLine().toUpperCase();
 							statement = connexion.createStatement();
 							request = "SELECT * FROM Ville WHERE nom_ville = '"+nomVille+"';";
@@ -190,6 +205,7 @@ public class Program {
 							}
 							System.out.println();
 							System.out.println(strMenu);
+							System.out.print("  < ");
 							option = sc.nextLine();
 							break;
 						case "7":
@@ -208,17 +224,17 @@ public class Program {
 							}
 							System.out.println();
 							System.out.println(strMenu);
+							System.out.print("  < ");
 							option = sc.nextLine();
 							break;
 						case "0":
 							System.out.println("Fermeture de la connexion à la BDD");
 							System.out.println();
-							System.out.println(strMenu);
-							option = sc.nextLine();
 							connexion.close();
 							break;
 						default:
 							System.out.println("Entrez un chiffre compris entre 0 et 7 (inclus) : ");
+							System.out.print("  < ");
 							option = sc.nextLine();
 							break;
 						}
