@@ -3,19 +3,27 @@ package data;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class MyConnection {
-	private static String url = "jdbc:mysql://localhost:3306/cda_langues?useSSL=false&serverTimezone=UTC";
-	private static String user = "cda1";
-	private static String password = "cda1pwd";
+	private static final Logger logger = LoggerFactory.getLogger("data.MyConnection");
 	private static Connection connexion = null;
 
 	private MyConnection() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			connexion = DriverManager.getConnection(url, user, password);
-		} catch (Exception e) {
-			e.printStackTrace();
+			Properties appProps = new Properties();
+			appProps.load(MyConnection.class.getResourceAsStream("/db.properties"));
+			connexion = DriverManager.getConnection(appProps.getProperty("url"),
+													appProps.getProperty("username"),
+													appProps.getProperty("password"));
+		}
+		catch (Exception e) {
+			logger.error("erreur : "+e);
+			System.out.println("Connexion à la BDD échouée");
 		}
 	}
 
@@ -31,6 +39,7 @@ public class MyConnection {
 			try {
 				connexion.close();
 			} catch (SQLException e) {
+				logger.error("erreur : "+e);
 				e.printStackTrace();
 			}
 		}

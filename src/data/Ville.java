@@ -6,6 +6,10 @@ public class Ville {
 	private int superficie;
 	private int idPays;
 	
+	public Ville() {
+		
+	}
+	
 	public Ville (String pNomVille, int pSuperficie, int pIdPays) {
 		this.nomVille=pNomVille;
 		this.superficie=pSuperficie;
@@ -53,6 +57,6 @@ public class Ville {
 	
 	@Override
 	public String toString() {
-		return "[id=" + numVille + ", nom=" + nomVille + ", Nombre d'habitants=" + superficie + ", id_Pays="+idPays+"]";
+		return "[id=" + numVille + ", nom=" + nomVille + ", superficie=" + superficie + ", id_Pays="+idPays+"]";
 	}
 }

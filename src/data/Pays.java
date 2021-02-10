@@ -16,6 +16,10 @@ public class Pays {
 		this.nbHabitants=pNbHabitants;
 	}
 	
+	public Pays() {
+
+	}
+
 	public int getNumPays() {
 		return numPays;
 	}
